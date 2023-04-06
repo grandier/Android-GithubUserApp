@@ -10,7 +10,7 @@ import com.bangkit.githubuserapp.databinding.ActivitySettingBinding
 
 class SettingActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySettingBinding
-    private val viewModel by viewModels<SettingViewModel>{
+    private val viewModel by viewModels<SettingViewModel> {
         SettingViewModel.Factory(SettingPreferences(this))
     }
 
@@ -37,8 +37,8 @@ class SettingActivity : AppCompatActivity() {
 
         binding.switchTheme.setOnCheckedChangeListener { _, isChecked ->
             viewModel.saveTheme(isChecked)
-            }
         }
+    }
 
     override fun onSupportNavigateUp(): Boolean {
         finish()

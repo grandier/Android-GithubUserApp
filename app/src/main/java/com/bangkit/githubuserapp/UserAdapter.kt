@@ -8,11 +8,14 @@ import coil.transform.CircleCropTransformation
 import com.bangkit.githubuserapp.Data.model.UserGithub
 import com.bangkit.githubuserapp.databinding.UserItemBinding
 
-class UserAdapter(private val data: MutableList<UserGithub.Item> = mutableListOf(), private val listener: (UserGithub.Item) -> Unit): RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
+class UserAdapter(
+    private val data: MutableList<UserGithub.Item> = mutableListOf(),
+    private val listener: (UserGithub.Item) -> Unit
+) : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
 
     class UserViewHolder(private val v: UserItemBinding) : RecyclerView.ViewHolder(v.root) {
         fun bind(item: UserGithub.Item) {
-            v.imgAvatar.load(item.avatar_url){
+            v.imgAvatar.load(item.avatar_url) {
                 transformations(CircleCropTransformation())
             }
 

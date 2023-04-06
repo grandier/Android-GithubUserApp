@@ -20,5 +20,5 @@ data class UserGithub(
         val id: Int,
         @ColumnInfo(name = "login")
         val login: String,
-    ): Parcelable
+    ) : Parcelable
 }

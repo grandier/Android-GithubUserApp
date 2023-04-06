@@ -10,14 +10,14 @@ import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 
-class MainViewModel(private val preferences: SettingPreferences): ViewModel() {
+class MainViewModel(private val preferences: SettingPreferences) : ViewModel() {
 
     val resultUserGithub = MutableLiveData<Result>()
 
     fun getTheme() = preferences.getThemeSetting().asLiveData()
 
-    fun getUser(){
-        viewModelScope.launch{
+    fun getUser() {
+        viewModelScope.launch {
             flow {
                 val response = ApiClient.ServiceGithub.getGithubUser()
 
@@ -34,8 +34,8 @@ class MainViewModel(private val preferences: SettingPreferences): ViewModel() {
         }
     }
 
-    fun getUser(username: String){
-        viewModelScope.launch{
+    fun getUser(username: String) {
+        viewModelScope.launch {
             flow {
                 val response = ApiClient.ServiceGithub.getGithubUserSearch(mapOf("q" to username))
 

@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".detail.DetailActivity"
-    android:background="@color/sage">
+    android:background="@color/sage"
+    tools:context=".detail.DetailActivity">
 
     <ImageView
         android:id="@+id/detailImage"
@@ -24,8 +24,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Title"
-        android:textSize="20sp"
         android:textColor="@color/black"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/detailImage"
@@ -37,8 +37,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textSize="10sp"
         android:textColor="@color/black"
+        android:textSize="10sp"
         android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -124,10 +124,10 @@
 
 
     <com.google.android.material.tabs.TabLayout
-        android:layout_margin="10dp"
         android:id="@+id/detailTable"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
         android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -135,10 +135,10 @@
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/detailViewpager"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="0dp"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

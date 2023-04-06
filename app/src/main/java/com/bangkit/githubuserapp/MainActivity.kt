@@ -21,12 +21,14 @@ import com.bangkit.githubuserapp.util.Result
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private val adapter by lazy { UserAdapter{ user ->
-        Intent(this, DetailActivity::class.java).apply {
-            putExtra("item", user)
-            startActivity(this)
+    private val adapter by lazy {
+        UserAdapter { user ->
+            Intent(this, DetailActivity::class.java).apply {
+                putExtra("item", user)
+                startActivity(this)
+            }
         }
-    } }
+    }
 
     private val viewModel by viewModels<MainViewModel>() {
         MainViewModel.Factory(SettingPreferences(this))
@@ -78,13 +80,14 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.main_menu, menu)
         return super.onCreateOptionsMenu(menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId){
+        when (item.itemId) {
             R.id.menu_favorite -> {
                 val intent = Intent(this, FavoriteActivity::class.java)
                 startActivity(intent)

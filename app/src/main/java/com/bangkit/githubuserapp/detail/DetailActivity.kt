@@ -40,7 +40,7 @@ class DetailActivity : AppCompatActivity() {
             when (it) {
                 is Result.Success<*> -> {
                     val user = it.data as DetailUserGithub
-                    binding.detailImage.load(user.avatar_url){
+                    binding.detailImage.load(user.avatar_url) {
                         transformations(CircleCropTransformation())
                     }
                     binding.detailName.text = user.name
@@ -87,9 +87,9 @@ class DetailActivity : AppCompatActivity() {
 
         binding.detailTable.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
-                if(tab?.position == 0){
+                if (tab?.position == 0) {
                     viewModel.getFollower(username)
-                }else
+                } else
                     viewModel.getFollowing(username)
             }
 
@@ -104,15 +104,15 @@ class DetailActivity : AppCompatActivity() {
             viewModel.setFavorite(item ?: return@setOnClickListener)
         }
 
-        viewModel.findFavorite(item?.id ?: 0){
+        viewModel.findFavorite(item?.id ?: 0) {
             binding.btnFavorite.changeIconColor(R.color.red)
         }
 
-        viewModel.resultFav.observe(this){
+        viewModel.resultFav.observe(this) {
             binding.btnFavorite.changeIconColor(R.color.red)
         }
 
-        viewModel.deleteFav.observe(this){
+        viewModel.deleteFav.observe(this) {
             binding.btnFavorite.changeIconColor(R.color.white)
         }
 
@@ -124,6 +124,6 @@ class DetailActivity : AppCompatActivity() {
     }
 }
 
-fun FloatingActionButton.changeIconColor(@ColorRes color: Int){
+fun FloatingActionButton.changeIconColor(@ColorRes color: Int) {
     imageTintList = ColorStateList.valueOf(ContextCompat.getColor(this.context, color))
 }

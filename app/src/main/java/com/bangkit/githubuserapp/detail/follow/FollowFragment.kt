@@ -18,9 +18,11 @@ import com.bangkit.githubuserapp.util.Result
 class FollowFragment : Fragment() {
 
     private var binding: FragmentFollowBinding? = null
-    private val adapter by lazy { UserAdapter{
+    private val adapter by lazy {
+        UserAdapter {
 
-    } }
+        }
+    }
 
     private val viewModel by activityViewModels<DetailViewModel>()
     var type = 0
@@ -42,7 +44,7 @@ class FollowFragment : Fragment() {
             adapter = this@FollowFragment.adapter
         }
 
-        when(type){
+        when (type) {
             FOLLOWERS -> {
                 viewModel.resultFollowers.observe(viewLifecycleOwner, this::manageResultFollows)
             }
@@ -52,13 +54,14 @@ class FollowFragment : Fragment() {
         }
     }
 
-    private fun manageResultFollows(result: Result){
-        when(result){
+    private fun manageResultFollows(result: Result) {
+        when (result) {
             is Result.Success<*> -> {
                 adapter.setData(result.data as MutableList<UserGithub.Item>)
             }
             is Result.Error -> {
-                Toast.makeText(requireActivity(), result.exception.message, Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireActivity(), result.exception.message, Toast.LENGTH_SHORT)
+                    .show()
             }
             is Result.Loading -> {
                 binding?.progressBarFragment?.isVisible = result.isLoading

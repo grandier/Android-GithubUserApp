@@ -14,7 +14,7 @@ import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 
-class DetailViewModel(private val db:DatabaseModule): ViewModel() {
+class DetailViewModel(private val db: DatabaseModule) : ViewModel() {
     val resultDetailUserGithub = MutableLiveData<Result>()
     val resultFollowers = MutableLiveData<Result>()
     val resultFollowing = MutableLiveData<Result>()
@@ -48,8 +48,8 @@ class DetailViewModel(private val db:DatabaseModule): ViewModel() {
         }
     }
 
-    fun getDetailUser(username: String){
-        viewModelScope.launch{
+    fun getDetailUser(username: String) {
+        viewModelScope.launch {
             flow {
                 val response = ApiClient.ServiceGithub.getGithubUserDetail(username)
 
@@ -66,8 +66,8 @@ class DetailViewModel(private val db:DatabaseModule): ViewModel() {
         }
     }
 
-    fun getFollower(username: String){
-        viewModelScope.launch{
+    fun getFollower(username: String) {
+        viewModelScope.launch {
             flow {
                 val response = ApiClient.ServiceGithub.getGithubUserFollowers(username)
 
@@ -84,8 +84,8 @@ class DetailViewModel(private val db:DatabaseModule): ViewModel() {
         }
     }
 
-    fun getFollowing(username: String){
-        viewModelScope.launch{
+    fun getFollowing(username: String) {
+        viewModelScope.launch {
             flow {
                 val response = ApiClient.ServiceGithub.getGithubUserFollowing(username)
 
@@ -102,7 +102,7 @@ class DetailViewModel(private val db:DatabaseModule): ViewModel() {
         }
     }
 
-    class Factory(private val db: DatabaseModule): ViewModelProvider.NewInstanceFactory(){
+    class Factory(private val db: DatabaseModule) : ViewModelProvider.NewInstanceFactory() {
         override fun <T : ViewModel> create(modelClass: Class<T>): T = DetailViewModel(db) as T
     }
 }

@@ -13,14 +13,16 @@ import com.bangkit.githubuserapp.detail.DetailActivity
 
 class FavoriteActivity : AppCompatActivity() {
     private lateinit var binding: ActivityFavoriteBinding
-    private val adapter by lazy { UserAdapter{ user ->
-        Intent(this, DetailActivity::class.java).apply {
-            putExtra("item", user)
-            startActivity(this)
+    private val adapter by lazy {
+        UserAdapter { user ->
+            Intent(this, DetailActivity::class.java).apply {
+                putExtra("item", user)
+                startActivity(this)
+            }
         }
-    } }
+    }
 
-    private val viewModel by viewModels<FavoriteViewModel>{
+    private val viewModel by viewModels<FavoriteViewModel> {
         FavoriteViewModel.Factory(DatabaseModule(this))
     }
 
